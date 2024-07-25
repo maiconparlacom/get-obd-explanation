@@ -45,7 +45,7 @@ const getObdExplanation = async (req, res) => {
             max_tokens: 500,
             n: 1,
             stop: null,
-            temperature: 0.7
+            temperature: 0.4
         });
 
         res.json({ explanation: response.data.choices[0].text.trim() });
