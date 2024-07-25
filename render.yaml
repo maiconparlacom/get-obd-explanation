@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: get-obd-explanation
+    env: node
+    branch: main
+    buildCommand: 'npm install'
+    startCommand: 'npm start'
