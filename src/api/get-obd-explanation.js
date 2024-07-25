@@ -40,7 +40,7 @@ const getObdExplanation = async (req, res) => {
 
     try {
         const response = await openai.post('/completions', {
-            model: 'text-davinci-003',
+            model: 'davinci-codex',
             prompt: prompt,
             max_tokens: 500,
             n: 1,
