@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const getObdExplanation = require('./api/get-obd-explanation');
+const getObdExplanation = require('../api/get-obd-explanation');
 
 const app = express();
 const port = process.env.PORT || 3000;
