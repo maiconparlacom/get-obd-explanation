@@ -3,5 +3,9 @@ services:
     name: get-obd-explanation
     env: node
     branch: main
+    rootDir: obd-api
     buildCommand: 'npm install'
     startCommand: 'npm start'
+    envVars:
+      - key: OPENAI_API_KEY
+        value: sua-chave-api-aqui
