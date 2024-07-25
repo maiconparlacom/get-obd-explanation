@@ -1,0 +1,13 @@
+{
+  "name": "obd-api",
+  "version": "1.0.0",
+  "description": "API para explicações de erros OBD usando o Chat GPT.",
+  "scripts": {
+    "start": "node api/get-obd-explanation.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "dotenv": "^10.0.0"
+  }
+}
