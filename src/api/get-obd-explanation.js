@@ -40,7 +40,7 @@ const getObdExplanation = async (req, res) => {
 
     try {
         const response = await openai.post('/completions', {
-            model: 'davinci-codex',
+            model: 'text-davinci-003',
             prompt: prompt,
             max_tokens: 500,
             n: 1,
@@ -50,7 +50,7 @@ const getObdExplanation = async (req, res) => {
 
         res.json({ explanation: response.data.choices[0].text.trim() });
     } catch (error) {
-        console.error(error);
+        console.error(error.response ? error.response.data : error.message);
         res.status(500).json({ error: 'An error occurred while fetching the explanation' });
     }
 };
