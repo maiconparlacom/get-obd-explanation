@@ -4,7 +4,7 @@ const getObdExplanation = async (req, res) => {
     const { latitude, longitude, vin, dtc } = req.body;
 
     if (!latitude || !longitude || !vin || !dtc) {
-        return res.status(400).json({ error: 'All fields are required' });
+        return res.status(400).json({ error: 'Todos os campos são obrigatórios' });
     }
 
     const prompt = `
@@ -39,16 +39,15 @@ const getObdExplanation = async (req, res) => {
     `;
 
     try {
-        const response = await openai.post('/completions', {
-            model: 'text-davinci-003',
-            prompt: prompt,
-            max_tokens: 500,
-            n: 1,
-            stop: null,
-            temperature: 0.4
+        const response = await openai.post('/chat/completions', {
+            model: 'gpt-4',
+            messages: [
+                { role: "system", content: "You are an expert in OBD error codes." },
+                { role: "user", content: prompt }
+            ]
         });
 
-        res.json({ explanation: response.data.choices[0].text.trim() });
+        res.json(response.data.choices[0].message.content.trim());
     } catch (error) {
         console.error(error.response ? error.response.data : error.message);
         res.status(500).json({ error: 'An error occurred while fetching the explanation' });
